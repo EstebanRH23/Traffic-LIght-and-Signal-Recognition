@@ -1,0 +1,79 @@
+<!-- Run all nodes required for autonomous mode  -->
+<launch>
+    <!-- Set Relative Parameters -->
+    <!-- debug_mode if tru enters on that mode -->
+    <param name="/debug_mode" value="false" type="bool" />
+    <!-- False if debug_mode true -->
+    <param name="/run_on_car" value="true" type="bool" />
+    <!--  -->
+    <param name="/lane_width" value="100" type="int" />
+    <!-- parameters of the akerman mechanism in sexagesimal degrees -->
+    <param name="/max_steering_angle_right" value="160" type="int" />
+    <param name="/max_steering_angle_left" value="20" type="int" />
+
+    <node name="ImageProcessing"
+        pkg="cic"
+        type="ImageProcessing"
+        respawn="true">
+        <!-- Set Parameters for Image Processing node -->
+        <param name="calibration_mode" value="false" type="bool" />
+        <param name="pixel_cm_ratio_x" value="3" type="int" />
+        <param name="pixel_cm_ratio_y" value="8" type="int" />
+        <param name="scale_x" value="0.4" type="double" />
+        <param name="scale_y" value="1.2" type="double" />
+        <param name="p1" value="48" type="int" />
+        <param name="p2" value="48" type="int" />
+        <param name="p3" value="44" type="int" />
+        <param name="p4" value="44" type="int" />
+    </node>
+
+    <node name="LaneDetection"
+        pkg="cic"
+        type="LaneDetection"
+        respawn="true">
+        <!-- Set Parameters for LaneDetection node -->
+        <param name="direct_mode" value="false" type="bool" />
+        <param name="max_vel" value="-500" type="int" />
+        <param name="steering_speed_ratio" value="1.5" type="double" />
+        <param name="servo_center_position" value="90" type="int" />
+        <param name="servo_step" value="2" type="int" />
+        <param name="drive_right_lane" value="true" type="bool" />
+
+    </node>
+
+    <node name="CrossingDetection"
+        pkg="cic"
+        type="CrossingDetection"
+        respawn="true">
+        <!-- Set Parameters for CrossingDetection node -->
+    </node>
+
+    <node name="ObstacleDetection"
+        pkg="cic"
+        type="ObstacleDetection"
+        respawn="true">
+        <!-- Set Parameters for CrossingDetection node -->
+        <param name="initial_range_angle" value="300.0" type="double" />
+        <param name="end_range_angle" value="200.0" type="double" />
+        <param name="range" value="1.9" type="double" />
+        <param name="min_points" value="10" type="int" />
+        <param name="max_distance" value="5" type="double" />
+    </node>
+
+
+    <node name="Maestro"
+        pkg="cic"
+        type="MasterTLTS.py"
+        respawn="true"
+	      output="screen">
+	      <param name="vel_dec_factor" value="-15" type="int" />
+        <param name="passing_enabled" value="false" type="bool" />
+
+    </node>
+
+    <node name="tl_detection"
+	      pkg="cic"
+	      type="Traffic_Light_detection.py"
+	      respawn="true">
+    </node>
+</launch>
