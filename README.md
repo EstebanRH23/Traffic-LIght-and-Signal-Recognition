@@ -31,3 +31,15 @@ Enter to the folder where you downloaded the repository:
 
 Finally you can disable the environment with the command:
 > Source deactivate "Name of the environment"
+
+##Contact 
+
+If you need more information about this code, please contact:
+
+- Project Supervisors: 
+  - Erik Zamora Gómez (E-mail: ezamora1981@gmail.com)
+  - Cesar Gerardo Bravo Conejo (E-mail: conilo@gmail.com)
+  
+- Project Author:
+  - Esteban Iván Rojas Hernández (E-mail: rojasesteban23@gmail.com)
+   
