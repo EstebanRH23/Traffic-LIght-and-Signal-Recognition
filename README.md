@@ -13,6 +13,16 @@ There are three main parts of the code that run in your computer with the help o
 - Funcionesapoyo.py : Miscellaneous functions used in the execution of the algorithm. (Sliding window algorithm, heat map, HOG parameters, etc.)
 - TrafficSign_Detector: Code where the image publish by the camera in the vehicle is imported and where the color segmentation part is realized to finally publish the topic with the bounding boxes marking the traffic signals.
 
+## Cloning the repository
+Create a new folder named "TS_detection" or whatever you want
+> mkdir TS_detection
+
+Access the folder 
+> cd TS_detection
+
+In order to start working with this code, please first clone the repository on the folder you previously created by typing:
+> git clone https://github.com/EstebanRH23/Traffic-LIght-and-Signal-Recognition.git
+
 ## Running the code
 
 First of all, make sure you have established communication with the car, with the command:
