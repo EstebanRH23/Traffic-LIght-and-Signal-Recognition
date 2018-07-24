@@ -1,10 +1,10 @@
 # Traffic-LIght-and-Signal-Recognition
 Repository with code, datasets and documentation of the terminal project named "Traffic Light and Traffic Signal Recognition applied to autonomous navigation of mobile robot"
 
-This repository was built with the help of [AutoModelCar CIC IPN] (https://github.com/Conilo/automodelcar-cic-ipn)
+This repository was built with the help of [AutoModelCar CIC IPN](https://github.com/Conilo/automodelcar-cic-ipn)
 
 **IMPORTANT: Before starting, make sure you have ROS, CONDA and all it's dependencies properly installed on your PC.
-Otherwise, visit the [ROS Tutorials] (http://wiki.ros.org/ROS/Tutorials) and [CONDA Tutorials] (https://conda.io/docs/user-guide/tutorials/index.html)**
+Otherwise, visit the [ROS Tutorials](http://wiki.ros.org/ROS/Tutorials) and [CONDA Tutorials](https://conda.io/docs/user-guide/tutorials/index.html)**
 
 # Summary
 There are three main parts of the code that run in your computer with the help of a conda environment:
@@ -19,7 +19,7 @@ First of all, make sure you have established communication with the car, with th
 
 > ssh root@192.168.43.102
 
-If you have any doubts about the communication with the car, you can check the documentation in [AutoModelCar CIC IPN] (https://github.com/Conilo/automodelcar-cic-ipn) or [Automodelcar] (https://github.com/AutoModelCar).
+If you have any doubts about the communication with the car, you can check the documentation in [AutoModelCar CIC IPN](https://github.com/Conilo/automodelcar-cic-ipn) or [Automodelcar](https://github.com/AutoModelCar).
 
 Parallel, you need to have Conda running in your machine with the purpose of source the environment called "", this environment have all the necessary to execute the code withouth problems.
 
