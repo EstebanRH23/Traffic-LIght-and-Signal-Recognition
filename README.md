@@ -32,7 +32,7 @@ Enter to the folder where you downloaded the repository:
 Finally you can disable the environment with the command:
 > Source deactivate "Name of the environment"
 
-##Contact 
+## Contact 
 
 If you need more information about this code, please contact:
 
