@@ -31,16 +31,16 @@ First of all, make sure you have established communication with the car, with th
 
 If you have any doubts about the communication with the car, you can check the documentation in [AutoModelCar CIC IPN](https://github.com/Conilo/automodelcar-cic-ipn) or [Automodelcar](https://github.com/AutoModelCar).
 
-Parallel, you need to have Conda running in your machine with the purpose of source the environment called "", this environment have all the necessary to execute the code withouth problems.
+Parallel, you need to have Conda running in your machine with the purpose of source the environment called "carnd-term1-cpu", this environment have all the necessary to execute the code withouth problems.
 
 You can enable the environment in your machine with:
-> Source activate "Name of the environment"
+> Source activate carnd-term1-cpu
 
 Enter to the folder where you downloaded the repository:
 > python TrafficSign_detector.py
 
 Finally you can disable the environment with the command:
-> Source deactivate "Name of the environment"
+> Source deactivate carnd-term1-cpu
 
 ## Contact 
 
