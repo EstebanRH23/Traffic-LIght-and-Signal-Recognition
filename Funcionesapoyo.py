@@ -195,9 +195,9 @@ def draw_labeled_bboxes(img, labels, labels2, labels3, labels4, labels5):
     # Iterate through all detected cars
     s="None"
 
-    for car_number in range(1, labels[1]+1):
+    for sign_number in range(1, labels[1]+1):
 #        # Find pixels with each car_number label value
-        nonzero = (labels[0] == car_number).nonzero()
+        nonzero = (labels[0] == sign_number).nonzero()
          # Identify x and y values of those pixels
         nonzeroy = np.array(nonzero[0])
         nonzerox = np.array(nonzero[1])
@@ -208,9 +208,9 @@ def draw_labeled_bboxes(img, labels, labels2, labels3, labels4, labels5):
         s= "Cien"
 
     #print(bbox)
-    for car_number in range(1, labels2[1]+1):
+    for sign_number in range(1, labels2[1]+1):
         # Find pixels with each car_number label value
-        nonzero2 = (labels2[0] == car_number).nonzero()
+        nonzero2 = (labels2[0] == sign_number).nonzero()
 #    #    # Identify x and y values of those pixels
         nonzeroy2 = np.array(nonzero2[0])
         nonzerox2 = np.array(nonzero2[1])
@@ -221,9 +221,9 @@ def draw_labeled_bboxes(img, labels, labels2, labels3, labels4, labels5):
         s= "Setenta"
 
         #print(bbox2)
-    for car_number in range(1, labels3[1]+1):
+    for sign_number in range(1, labels3[1]+1):
         # Find pixels with each car_number label value
-        nonzero3 = (labels3[0] == car_number).nonzero()
+        nonzero3 = (labels3[0] == sign_number).nonzero()
 #    #    # Identify x and y values of those pixels
         nonzeroy3 = np.array(nonzero3[0])
         nonzerox3 = np.array(nonzero3[1])
@@ -233,9 +233,9 @@ def draw_labeled_bboxes(img, labels, labels2, labels3, labels4, labels5):
         cv2.rectangle(img, bbox3[0] , bbox3[1], (255,0,255), 3)
         s= "Cincuenta"
 
-    for car_number in range(1, labels4[1]+1):
+    for sign_number in range(1, labels4[1]+1):
         # Find pixels with each car_number label value
-        nonzero4 = (labels4[0] == car_number).nonzero()
+        nonzero4 = (labels4[0] == sign_number).nonzero()
 #    #    # Identify x and y values of those pixels
         nonzeroy4 = np.array(nonzero4[0])
         nonzerox4 = np.array(nonzero4[1])
@@ -245,9 +245,9 @@ def draw_labeled_bboxes(img, labels, labels2, labels3, labels4, labels5):
         cv2.rectangle(img, bbox4[0] , bbox4[1], (150,100,255), 3)
         s= "Veinte"
 
-    for car_number in range(1, labels5[1]+1):
+    for sign_number in range(1, labels5[1]+1):
         # Find pixels with each car_number label value
-        nonzero5 = (labels5[0] == car_number).nonzero()
+        nonzero5 = (labels5[0] == sign_number).nonzero()
 #    #    # Identify x and y values of those pixels
         nonzeroy5 = np.array(nonzero5[0])
         nonzerox5 = np.array(nonzero5[1])
