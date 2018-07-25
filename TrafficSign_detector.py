@@ -1,9 +1,5 @@
-#TODO
-#Evaluar si la ecualización de color se puede aplicar a este algoritmo
-#Encontrar una forma de que los cambios de luz no afecten tanto al color percibido
-#Probablemente sea necesario hacer una clase que detecte semáforos si no es posible calibrar la mascara, o buscar apoyarme de un color azul-
-# -*- coding: utf-8 -*-
 
+# -*- coding: utf-8 -*-
 import numpy as np
 import rospy
 from sensor_msgs.msg import Image, CompressedImage
@@ -13,7 +9,6 @@ import time
 from sklearn.externals import joblib
 from Funcionesapoyo import *
 from SVM_final import X_scaler
-from scipy.ndimage.measurements import label
 
 def image_callback(ros_data):
 
@@ -25,14 +20,7 @@ def image_callback(ros_data):
     crop = image_np[0:200,200:640]
     color = cv2.cvtColor(crop, cv2.COLOR_BGR2RGB)
     hsv = cv2.cvtColor(color, cv2.COLOR_BGR2HSV)
-    #hsv[:,:,1] = cv2.equalizeHist(hsv[:,:,1])
-    #hsv[:,:,2] = cv2.equalizeHist(hsv[:,:,2])
-    #nueva= cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)
-
-    #lower_red = np.array([0,150,200])
-    #upper_red = np.array([10,250,300]) #equalizando 2
-    #lower_red = np.array([0,150,110])
-    #upper_red = np.array([10,250,150]) #sin equal
+    
     lower_red = np.array([0,100,150])
     upper_red = np.array([15,200,200]) #Señales de transito
 
@@ -43,8 +31,6 @@ def image_callback(ros_data):
     msk_stop = cv2.inRange(hsv, lower_stop, upper_stop)
     stop=cv2.countNonZero(msk_stop)
 
-    #print(r)
-    #print(stop)
     blur_r = cv2.GaussianBlur(msk_r,(5,5),5)
     circles_r = cv2.HoughCircles( blur_r , cv2.HOUGH_GRADIENT, 1,20, param1=50, param2=30, minRadius=0, maxRadius=0)
 
@@ -52,9 +38,6 @@ def image_callback(ros_data):
         circles_r = np.round(circles_r[0, :]).astype("int")
         radio = circles_r[0][2]
         if radio >= 15:
-            #print ("Probably there is a traffic sign")
-            #cv2.circle(color,(circles_r[0][0],circles_r[0][1]),circles_r[0][2],(0,0,255),4)
-            #print("y")
             gray = cv2.cvtColor(color, cv2.COLOR_RGB2GRAY)
 
             svc = joblib.load("Senales75x75.pkl")
@@ -70,11 +53,8 @@ def image_callback(ros_data):
             hot_windows,hot_windows2, hot_windows3, hot_windows4, hot_windows5= search_windows(color, windows, svc, X_scaler,
                                          orient=9, pix_per_cell=8, cell_per_block=3)
 
-            #print(predictio)
             # Image without heatmaṕ
             window_img = draw_boxes(color, hot_windows, hot_windows2, hot_windows3, hot_windows4, color=(255,0,0), color2=(0,255,0), color3=(0,0,255), color4=(255,255,0), thick=3)
-            #lower_red = np.array([0,150,150])
-            #upper_red = np.array([25,250,255]) //señales de transito
             # Heatmap
             heat1= add_heat(heat1,hot_windows)
             heat2= add_heat(heat2,hot_windows2)
@@ -126,11 +106,9 @@ def image_callback(ros_data):
 
         hot_windows,hot_windows2, hot_windows3, hot_windows4, hot_windows5= search_windows(color, windows, svc, X_scaler,
                                      orient=9 , pix_per_cell=8, cell_per_block=3)
-
-        #print(prediction)
         # Image without heatmaṕ
         window_img = draw_boxes(color, hot_windows, hot_windows2, hot_windows3, hot_windows4, color=(255,0,0), color2=(0,255,0), color3=(0,0,255), color4=(255,255,0), thick=3)        #lower_red = np.array([0,150,150])
-        #upper_red = np.array([25,250,255]) //señales de transito
+     
 
         # Heatmap
 
@@ -167,8 +145,6 @@ def image_callback(ros_data):
         s="None"
 
     e2 = cv2.getTickCount()
-    #t = (e2 - e1)/cv2.getTickFrequency()
-   # print(t)
     final= CompressedImage()
     final.header.stamp = rospy.Time.now()
     final.format = 'jpeg'
