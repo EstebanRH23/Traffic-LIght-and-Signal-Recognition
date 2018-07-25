@@ -13,6 +13,12 @@ There are three main parts of the code that run in your computer with the help o
 - Funcionesapoyo.py : Miscellaneous functions used in the execution of the algorithm. (Sliding window algorithm, heat map, HOG parameters, etc.)
 - TrafficSign_Detector: Code where the image publish by the camera in the vehicle is imported and where the color segmentation part is realized to finally publish the topic with the bounding boxes marking the traffic signals.
 
+There are three parts of the code that run in the car, with the help of ROS:
+
+- Maestro : In this folder there are the state machines used to program the behaviour sequence of Traffic Sign and Traffic Light Detection, besides, there is the "MasterTLTS.py" file which governs the velocities and the reactive behaviour in the car (Stop in Red Traffic Light, modify speed, etc.)
+- tl_detection: This folder contains the algorithm of color segmentation and mask apply to identify the color in the traffic light
+- TLTS.launch: This file runs the nodes used in the autonomous navigation mode, the Master and the traffic light detection
+
 ## Cloning the repository
 Create a new folder named "TS_detection" or whatever you want
 > mkdir TS_detection
@@ -23,7 +29,7 @@ Access the folder
 In order to start working with this code, please first clone the repository on the folder you previously created by typing:
 > git clone https://github.com/EstebanRH23/Traffic-LIght-and-Signal-Recognition.git
 
-## Running the code
+## Running the code in the Remote computer
 
 First of all, make sure you have established communication with the car, with the command:
 
@@ -39,8 +45,16 @@ You can enable the environment in your machine with:
 Enter to the folder where you downloaded the repository:
 > python TrafficSign_detector.py
 
+This is to run only the Traffic Sign detector in your computer, to then, remotely send to the car when there is a Traffic Sign and where there is not.
+
 Finally you can disable the environment with the command:
 > Source deactivate carnd-term1-cpu
+
+## Running the code in the car
+
+After you run all the necessary code in the remote computer, and after you make sure that all the parts of the code running on the car are on their place, you can just type in the vehicle's computer:
+
+> roslaunch cic TLTS.launch
 
 ## Contact 
 
