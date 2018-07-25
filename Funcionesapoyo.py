@@ -112,7 +112,6 @@ def search_windows(img, windows, clf, scaler, orient=9,
 
     on_windows_alto = []
     on_windows_cien = []
-    #on_windows_ochenta = []
     on_windows_cincuenta= []
     on_windows_veinte= []
     on_windows_setenta = []
